@@ -85,6 +85,7 @@ class ModuleCrud extends Crud
 	{
 		$this->unset_coloumn 			= ['id','created_at','updated_at','updated_by'];
 		$this->addCallBackColoumn('created_by', 'created_by', 'setCreatedBy');
+		$request->parent_id	=	$request->parent_id ?? 0;
 		$response = $this->insertData($request);
 		$this->log($request->title .' module added');
 		return redirect($response);
@@ -115,6 +116,7 @@ class ModuleCrud extends Crud
 		$this->unset_coloumn 			= ['id','created_at','created_by','updated_at'];
 		$this->addCallBackColoumn('updated_by', 'updated_by', 'setUpdatedBy');
 		$old_data = Module::find($request->id)->toJson();
+		$request->parent_id	=	$request->parent_id ?? 0;
 		$response = $this->updateData($request);
 		$this->log($request->title .' module updated',null, $old_data);
 		return redirect($response);
