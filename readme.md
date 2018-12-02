@@ -1,1 +1,1 @@
-**WGT ADMIN**
+**LARAVEL ADMIN**
